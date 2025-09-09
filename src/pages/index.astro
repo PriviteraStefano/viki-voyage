@@ -12,15 +12,15 @@ if (!entry) {
 }
 
 const {Content} = await render(entry)
-
 ---
 
 <!doctype html>
 <html lang="en">
 <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION}/>
-<body>
+<body class="bg-primary-foreground">
 <Header/>
-<main>
+<main class="flex flex-col h-screen items-center rounded-2xl bg-linear-to-b from-primary mx-6 py-4">
+  <h1 class="text-7xl text-secondary">WELCOME</h1>
   <Content/>
 </main>
 <Footer/>
