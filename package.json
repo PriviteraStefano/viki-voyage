@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "viki",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -12,7 +12,14 @@
     "@astrojs/mdx": "^4.3.4",
     "@astrojs/rss": "^4.0.12",
     "@astrojs/sitemap": "^3.5.1",
+    "@tailwindcss/vite": "^4.1.13",
     "astro": "^5.13.5",
-    "sharp": "^0.34.2"
+    "eslint": "^9.35.0",
+    "eslint-plugin-unicorn": "^61.0.2",
+    "sharp": "^0.34.2",
+    "tailwindcss": "^4.1.13"
+  },
+  "devDependencies": {
+    "oxlint": "^1.14.0"
   }
 }
