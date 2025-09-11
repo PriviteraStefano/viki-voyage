@@ -5,6 +5,10 @@ import '../styles/global.css';
 import type {ImageMetadata} from 'astro';
 import FallbackImage from '../assets/blog-placeholder-1.jpg';
 import {SITE_TITLE} from '../consts';
+import AOS from "aos";
+import 'aos/dist/aos.css';
+import { Font } from 'astro:assets';
+
 
 interface Props {
   title: string;
@@ -32,9 +36,8 @@ const {title, description, image = FallbackImage} = Astro.props;
   <meta name="generator" content={Astro.generator}/>
 
   <!-- Font preloads -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <Font cssVariable="--font-nunito" preload/>
+
 
   <!-- Canonical URL -->
   <link rel="canonical" href={canonicalURL}/>
@@ -58,3 +61,7 @@ const {title, description, image = FallbackImage} = Astro.props;
   <meta property="twitter:description" content={description}/>
   <meta property="twitter:image" content={new URL(image.src, Astro.url)}/>
 </head>
+<script>
+  import AOS from "aos";
+  AOS.init({once: true});
+</script>

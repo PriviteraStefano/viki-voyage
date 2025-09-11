@@ -13,9 +13,12 @@
     "@astrojs/rss": "^4.0.12",
     "@astrojs/sitemap": "^3.5.1",
     "@tailwindcss/vite": "^4.1.13",
+    "@types/aos": "^3.0.7",
+    "aos": "^2.3.4",
     "astro": "^5.13.5",
     "eslint": "^9.35.0",
     "eslint-plugin-unicorn": "^61.0.2",
+    "if": "^2.0.0",
     "sharp": "^0.34.2",
     "tailwindcss": "^4.1.13"
   },

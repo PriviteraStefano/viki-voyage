@@ -3,15 +3,24 @@ import {SITE_TITLE} from '../consts';
 import HeaderLink from './HeaderLink.astro';
 ---
 
-<header class="sticky top-0 w-full">
-  <nav class=" flex flex-row w-full justify-between items-center">
-    <div class="flex flex-row p-2 m-2 rounded-4xl bg-primary text-secondary inset-shadow-sm inset-shadow-primary-foreground">
-      <HeaderLink class={"text-lg"} href="/">Home</HeaderLink>
-      <HeaderLink class={"text-lg"} href="/blog">Blog</HeaderLink>
-      <HeaderLink class={"text-lg"} href="/about">About</HeaderLink>
+<header class="sticky top-2 z-20 m-2">
+  <nav class="flex flex-row w-full justify-between items-center">
+    <div data-aos="fade-right"
+         data-aos-delay="100"
+         data-aos-once="true"
+         class="flex flex-row p-2 rounded-2xl bg-primary text-secondary inset-shadow-sm inset-shadow-primary-foreground"
+    >
+      <HeaderLink class={"text-lg"} emoji='🏠'  href="/">Home</HeaderLink>
+      <HeaderLink class={"text-lg"} emoji='👩🏻‍💻' href="/blog">Blog</HeaderLink>
+      <HeaderLink class={"text-lg"} emoji='👩🏻‍⚕️' href="/about">About Me</HeaderLink>
     </div>
-    <h2 class="align-middle h-fit px-4 m-2 rounded-4xl text-lg bg-primary-foreground text-secondary inset-shadow-sm inset-shadow-secondary">
-      <a class="align-middle" href="/">{SITE_TITLE}</a>
+    <h2
+        data-aos="fade-left"
+        data-aos-delay="100"
+        class="align-middle h-fit py-2 px-4 rounded-4xl text-lg bg-secondary text-primary-foreground inset-shadow-sm inset-shadow-primary-foreground"
+    >
+      <a class="align-middle italic" href="/">{SITE_TITLE}</a>
     </h2>
   </nav>
+
 </header>

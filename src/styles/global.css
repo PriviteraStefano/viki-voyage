@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@theme inline {
+    --font-sans: var(--font-nunito);
+}
+
 @theme {
     --radius: 0.625rem;
     --color-background: #EFE8D8;

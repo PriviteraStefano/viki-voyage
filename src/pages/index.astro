@@ -19,8 +19,13 @@ const {Content} = await render(entry)
 <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION}/>
 <body class="bg-primary-foreground">
 <Header/>
-<main class="flex flex-col h-screen items-center rounded-2xl bg-linear-to-b from-primary mx-6 py-4">
-  <h1 class="text-7xl text-secondary">WELCOME</h1>
+<main data-aos="fade-up"
+      data-aos-delay="300"
+      data-aos-offset="120"
+      data-aos-duration="500"
+      data-aos-easing="ease-in-out"
+      class="flex flex-col h-screen items-center rounded-2xl bg-linear-to-b from-primary inset-shadow-sm inset-shadow-primary-foreground mx-4 py-4">
+  <h1 class="text-[10rem] italic text-secondary">WELCOME</h1>
   <Content/>
 </main>
 <Footer/>
