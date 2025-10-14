@@ -1,0 +1,17 @@
+---
+import {SITE_DESCRIPTION, SITE_TITLE} from '../consts';
+import Layout from '../layouts/BlogPost.astro';
+import BaseLayout from "../layouts/BlogPost.astro";
+
+
+---
+
+<!doctype html>
+<BaseLayout
+    title={`Books - ${SITE_TITLE}`}
+    description={SITE_DESCRIPTION}
+    pubDate={new Date()}
+    updatedDate={new Date()}
+>
+
+</BaseLayout>

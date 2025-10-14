@@ -2,12 +2,6 @@
 import {SITE_TITLE} from '../consts';
 import HeaderLink from './HeaderLink.astro';
 
-type Props = {
-  intersected: boolean;
-};
-
-const {intersected} = Astro.props;
-
 ---
 
 <header id="header" class="sticky bg-transparent top-2 z-20 m-2 p-2">
@@ -19,6 +13,7 @@ const {intersected} = Astro.props;
     >
       <HeaderLink class={"text-lg"} emoji='🏠'  href="/">Home</HeaderLink>
       <HeaderLink class={"text-lg"} emoji='👩🏻‍💻' href="/blog">Blog</HeaderLink>
+      <HeaderLink class={"text-lg"} emoji='📚️' href="/books">Books</HeaderLink>
       <HeaderLink class={"text-lg"} emoji='👩🏻‍⚕️' href="/about">About Me</HeaderLink>
     </div>
     <h2
