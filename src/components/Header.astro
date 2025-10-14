@@ -1,9 +1,16 @@
 ---
 import {SITE_TITLE} from '../consts';
 import HeaderLink from './HeaderLink.astro';
+
+type Props = {
+  intersected: boolean;
+};
+
+const {intersected} = Astro.props;
+
 ---
 
-<header class="sticky top-2 z-20 m-2">
+<header id="header" class="sticky bg-transparent top-2 z-20 m-2 p-2">
   <nav class="flex flex-row w-full justify-between items-center">
     <div data-aos="fade-right"
          data-aos-delay="100"
@@ -22,5 +29,29 @@ import HeaderLink from './HeaderLink.astro';
       <a class="align-middle italic" href="/">{SITE_TITLE}</a>
     </h2>
   </nav>
-
 </header>
+<script>
+  // Observe the header element for intersection
+  function onScroll(_: Event) {
+    const header = document.getElementById("header");
+    const main = document.getElementById("main");
+    const headerRect = header!.getBoundingClientRect();
+    const mainRect = main!.getBoundingClientRect();
+
+    const overlap = !(
+      headerRect.bottom < mainRect.top ||
+      headerRect.top > mainRect.bottom
+    );
+
+    if (overlap) {
+      header!.classList.add("backdrop-blur-lg", "bg-background/30", "p-2", "rounded-2xl", "inset-shadow-sm", "inset-shadow-primary-foreground");
+      header!.classList.remove("bg-transparent");
+    } else {
+      header!.classList.remove("bg-background");
+      header!.classList.add("bg-transparent");
+    }
+  }
+
+  window.addEventListener("scroll", onScroll);
+
+</script>
