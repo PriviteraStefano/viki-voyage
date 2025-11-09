@@ -3,12 +3,12 @@ import {SITE_TITLE} from '../consts';
 import HeaderLink from './HeaderLink.astro';
 ---
 
-<header id="header" class="sticky bg-transparent top-2 z-20 m-2 p-2 transition-all duration-300 ease-in-out">
+<header id="header" class="sticky top-2 z-20 m-2 transition-all duration-300 ease-in-out [&>*>div]:inset-shadow-secondary-foreground">
   <nav class="flex flex-row w-full justify-between items-center">
     <div data-aos="fade-right"
          data-aos-delay="100"
          data-aos-once="true"
-         class="flex flex-row p-2 gap-1 rounded-2xl bg-primary text-secondary inset-shadow-sm inset-shadow-primary-foreground"
+         class="flex flex-row p-2 gap-1 rounded-2xl bg-primary/80 text-secondary inset-shadow-sm"
     >
       <HeaderLink class={"text-lg"} emoji='🏠' href="/">Home</HeaderLink>
       <HeaderLink class={"text-lg"} emoji='👩🏻‍💻' href="/blog">Blog</HeaderLink>
@@ -18,17 +18,16 @@ import HeaderLink from './HeaderLink.astro';
     <a
         data-aos="fade-left"
         data-aos-delay="100"
-        class="align-middle italic" href="/">
+        class="align-middle font-serif" href="/">
       <h2
-
-          class="align-middle h-fit py-2 px-4 rounded-4xl text-lg inset-shadow-sm inset-shadow-primary-foreground
-         text-secondary transition-colors ease-linear duration-400 delay-150 hover:bg-secondary hover:text-primary-foreground "
+          class="align-middle h-fit py-2 px-4 rounded-4xl text-lg inset-shadow-sm bg-secondary text-primary-foreground"
       >
         {SITE_TITLE}
       </h2>
     </a>
   </nav>
 </header>
+
 <script>
   // Observe the header element for intersection
   function onScroll(_: Event) {
@@ -43,14 +42,39 @@ import HeaderLink from './HeaderLink.astro';
     );
 
     if (overlap) {
-      header!.classList.add("backdrop-blur-lg", "bg-background/30", "p-2", "rounded-2xl", "inset-shadow-sm", "inset-shadow-primary-foreground");
-      header!.classList.remove("bg-transparent");
+      header!.classList.add(
+        "backdrop-blur-lg",
+        "bg-primary/60",
+        "p-2",
+        "rounded-2xl",
+        "inset-shadow-sm",
+        "inset-shadow-primary-foreground",
+        "[&>*>div]:inset-shadow-primary",
+        "[&>*>a]:inset-shadow-primary"
+      );
+      header!.classList.remove(
+        "bg-transparent",
+        "[&>*>div]:inset-shadow-secondary-foreground",
+        "[&>*>a]:inset-shadow-secondary-foreground"
+      );
     } else {
-      header!.classList.remove("bg-background");
-      header!.classList.add("bg-transparent");
+      header!.classList.remove(
+        "backdrop-blur-lg",
+        "bg-primary/60",
+        "p-2",
+        "rounded-2xl",
+        "inset-shadow-sm",
+        "inset-shadow-primary-foreground",
+        "[&>*>div]:inset-shadow-primary",
+        "[&>*>a]:inset-shadow-primary"
+      );
+      header!.classList.add(
+        "bg-transparent",
+        "[&>*>div]:inset-shadow-secondary-foreground",
+        "[&>*>a]:inset-shadow-secondary-foreground"
+      );
     }
   }
 
   window.addEventListener("scroll", onScroll);
-
 </script>

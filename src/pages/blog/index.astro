@@ -16,20 +16,50 @@ const posts = (await getCollection('blog')).sort(
     pubDate={new Date()}
     updatedDate={new Date()}
 >
-  <section>
-    <ul>
+  <section class="p-4">
+    <ul class="flex flex-col gap-4 w-full">
       {
         posts.map((post) => (
-            <li>
-              <a href={`/blog/${post.id}/`}>
-                {post.data.heroImage && (
-                    <Image width={720} height={360} src={post.data.heroImage} alt=""/>
-                )}
-                <h4 class="title">{post.data.title}</h4>
-                <p class="date">
-                  <FormattedDate date={post.data.pubDate}/>
-                </p>
-              </a>
+            <li
+                data-aos-once="false"
+                data-aos="fade-up"
+                data-aos-offset="120"
+                data-aos-duration="500"
+                data-aos-easing="ease-in-out"
+                class="group"
+            >
+              <div class="bg-linear-to-r group-odd:bg-linear-to-l from-primary/30 to-primary/10 text-secondary
+                 transition ease-in-out delay-100 duration-400 hover:to-primary/70
+                 inset-shadow-sm inset-shadow-primary-foreground bg-blur-lg hover:shadow-lg shadow-primary/30
+                 w-full p-4 md:p-6 xl:p-8 rounded-2xl">
+                <a href={`/blog/${post.id}/`}
+                   class="hover:cursor-pointer flex flex-col gap-4 md:gap-6 xl:gap-8 w-full group-odd:md:flex-row-reverse md:flex-row">
+                  {post.data.heroImage && (
+                      <Image
+                          loading={"eager"}
+                          src={post.data.heroImage} alt={post.data.title}
+                          class="rounded-2xl md:max-w-3/5 lg:w-3/5 aspect-video"/>
+                  )}
+                  <div class="flex flex-col flex-1 gap-2 justify-between">
+                    <div class="flex flex-col">
+                      <h2 class="text-xl lg:text-2xl xl:text-3xl font-bold font-serif">{post.data.title}</h2>
+                      <p class="text-xs lg:text-sm xl:text-md">
+                        <FormattedDate date={post.data.pubDate}/>
+                      </p>
+                      <p class="text-md lg:text-lg xl:text-xl py-8">{post.data.preview}</p>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2 mt-4">
+                      {post.data.tags?.map(t => (
+                          <span
+                              class="inline-block bg-secondary/20 text-secondary px-3 py-1 rounded-full text-sm lg:text-md font-mono w-fit">
+                          #{t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </a>
+              </div>
             </li>
         ))
       }

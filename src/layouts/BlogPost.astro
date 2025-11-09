@@ -17,31 +17,16 @@ const {title, description, pubDate, updatedDate, heroImage} = Astro.props;
 <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION}/>
 <Body>
 <Header/>
-<main id="main">
-  <article>
-    <div class="hero-image">
-      {heroImage &&
-          <Image width={1020} height={510} src={heroImage} alt=""/>}
-    </div>
-    <div class="prose">
-      <div class="title">
-        <div class="date">
-          <FormattedDate date={pubDate}/>
-          {
-            updatedDate && (
-                  <div class="last-updated-on">
-                    Last updated on
-                    <FormattedDate date={updatedDate}/>
-                  </div>
-            )
-          }
-        </div>
-        <h1>{title}</h1>
-        <hr/>
-      </div>
-      <slot/>
-    </div>
-  </article>
+<main id="main" class="w-screen bg-primary-foreground bg-[{heroImage ? 'length:0' : 'url(`${heroImage.src`)'}] bg-cover bg-center ">
+  <!--{heroImage &&-->
+  <!--    <Image-->
+  <!--        loading={"eager"}-->
+  <!--        src={heroImage}-->
+  <!--        alt={title}-->
+  <!--        class="rounded-2xl absolute md:max-w-3/5 lg:w-3/5 aspect-video"/>-->
+  <!--    <slot/>-->
+  <!--}-->
+  <slot/>
 </main>
 <Footer/>
 </Body>
