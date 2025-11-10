@@ -16,8 +16,8 @@ const posts = (await getCollection('blog')).sort(
     pubDate={new Date()}
     updatedDate={new Date()}
 >
-  <section class="p-4">
-    <ul class="flex flex-col gap-4 w-full">
+  <section class="mx-auto p-4">
+    <ul class="mx-auto container md:columns-2 xl:columns-3 gap-4 md:gap-6 xl:gap-8 list-none m-0 p-0">
       {
         posts.map((post) => (
             <li
@@ -26,19 +26,23 @@ const posts = (await getCollection('blog')).sort(
                 data-aos-offset="120"
                 data-aos-duration="500"
                 data-aos-easing="ease-in-out"
-                class="group"
+                class="group @container h-full pb-4 md:pb-6 xl:pb-8 break-inside-avoid"
             >
               <div class="bg-linear-to-r group-odd:bg-linear-to-l from-primary/30 to-primary/10 text-secondary
-                 transition ease-in-out delay-100 duration-400 hover:to-primary/70
-                 inset-shadow-sm inset-shadow-primary-foreground bg-blur-lg hover:shadow-lg shadow-primary/30
+                 transition-all ease-in-out delay-50 duration-400 hover:to-primary/70
+                 inset-shadow-2xs hover:inset-shadow-sm
+                 hover:scale-[1.01] hover:inset-shadow-lg inset-shadow-background
+                 bg-blur-lg hover:shadow-lg shadow-primary/30
                  w-full p-4 md:p-6 xl:p-8 rounded-2xl">
                 <a href={`/blog/${post.id}/`}
-                   class="hover:cursor-pointer flex flex-col gap-4 md:gap-6 xl:gap-8 w-full group-odd:md:flex-row-reverse md:flex-row">
+                   class="hover:cursor-pointer flex flex-col gap-4 md:gap-6 xl:gap-8 w-full">
                   {post.data.heroImage && (
-                      <Image
-                          loading={"eager"}
-                          src={post.data.heroImage} alt={post.data.title}
-                          class="rounded-2xl md:max-w-3/5 lg:w-3/5 aspect-video"/>
+                      <div class="inset-shadow-2xs group-hover:inset-shadow-primary inset-shadow-secondary w-full z-10 rounded-xl">
+                        <Image
+                            loading={"eager"}
+                            src={post.data.heroImage} alt={post.data.title}
+                            class="rounded-xl w-full  aspect-video "/>
+                      </div>
                   )}
                   <div class="flex flex-col flex-1 gap-2 justify-between">
                     <div class="flex flex-col">
