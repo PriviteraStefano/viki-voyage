@@ -17,7 +17,7 @@ const posts = (await getCollection('blog')).sort(
     updatedDate={new Date()}
 >
   <section class="mx-auto p-4">
-    <ul class="mx-auto container md:columns-2 xl:columns-3 gap-4 md:gap-6 xl:gap-8 list-none m-0 p-0">
+    <ul class="mx-auto container group/list md:columns-2 xl:columns-3 gap-4 md:gap-6 xl:gap-8 list-none m-0 p-0">
       {
         posts.map((post) => (
             <li
@@ -31,13 +31,14 @@ const posts = (await getCollection('blog')).sort(
               <div class="bg-linear-to-r group-odd:bg-linear-to-l from-primary/30 to-primary/10 text-secondary
                  transition-all ease-in-out delay-50 duration-400 hover:to-primary/70
                  inset-shadow-2xs hover:inset-shadow-sm
-                 hover:scale-[1.01] hover:inset-shadow-lg inset-shadow-background
+                 hover:scale-[1.02] hover:inset-shadow-lg inset-shadow-background
                  bg-blur-lg hover:shadow-lg shadow-primary/30
-                 w-full p-4 md:p-6 xl:p-8 rounded-2xl">
+                 w-full p-4 md:p-6 rounded-2xl hover:group/list:blur-xl">
                 <a href={`/blog/${post.id}/`}
                    class="hover:cursor-pointer flex flex-col gap-4 md:gap-6 xl:gap-8 w-full">
                   {post.data.heroImage && (
-                      <div class="inset-shadow-2xs group-hover:inset-shadow-primary inset-shadow-secondary w-full z-10 rounded-xl">
+                      <div class="inset-shadow-2xs bg-secondary-foreground
+                       group-hover:shadow-lg shadow-xs shadow-primary w-full z-10 rounded-xl">
                         <Image
                             loading={"eager"}
                             src={post.data.heroImage} alt={post.data.title}
