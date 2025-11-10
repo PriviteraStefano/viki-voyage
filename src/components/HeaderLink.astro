@@ -1,20 +1,27 @@
 ---
-import type { HTMLAttributes } from 'astro/types';
+import type {HTMLAttributes} from 'astro/types';
 
-type Props = HTMLAttributes<'a'> & {emoji: string};
+type Props = HTMLAttributes<'a'> & { emoji: string };
 
 const {
-	href,
-	class: className,
-	emoji,
-	...props
+  href,
+  class: className,
+  emoji,
+  ...props
 } = Astro.props;
 const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
 const subpath = pathname.match(/[^/]+/g);
 const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
 ---
 
-<a href={href} data-active={isActive} class="data-[active=true]:inset-shadow-sm hover:inset-shadow-sm hover:inset-shadow-primary hover:bg-primary-foreground/20 data-[active=true]:bg-secondary data-[active=true]:text-primary-foreground inset-shadow-secondary-foreground px-4 py-1  rounded-xl" {...props}>
-	{isActive && emoji}
-	<slot />
+<a href={href}
+   data-active={isActive}
+   class="data-[active=true]:inset-shadow-sm text-lg font-serif hover:inset-shadow-sm
+   transition-all duration-200 ease-in-out hover:scale-95
+    hover:inset-shadow-foreground hover:bg-primary-foreground/20 data-[active=true]:bg-secondary
+    data-[active=true]:text-primary-foreground inset-shadow-secondary-foreground px-4 py-1  rounded-xl
+    "
+   {...props}>
+  {isActive && emoji}
+  <slot/>
 </a>

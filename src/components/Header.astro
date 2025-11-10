@@ -3,24 +3,28 @@ import {SITE_TITLE} from '../consts';
 import HeaderLink from './HeaderLink.astro';
 ---
 
-<header id="header" class="sticky top-2 z-20 m-2 transition-all duration-300 ease-in-out [&>*>div]:inset-shadow-secondary-foreground">
+<header id="header" class="sticky top-2 z-20 m-2 transition-all duration-300 ease-in-out [&>*>div]:inset-shadow-sm [&>*>div]:inset-shadow-background
+        ">
   <nav class="flex flex-row w-full justify-between items-center">
     <div data-aos="fade-right"
          data-aos-delay="100"
          data-aos-once="true"
-         class="flex flex-row p-2 gap-1 rounded-2xl bg-primary/80 text-secondary inset-shadow-sm"
+         class="flex flex-row p-2 gap-1 rounded-2xl bg-primary/80 text-secondary"
     >
-      <HeaderLink class={"text-lg"} emoji='🏠' href="/">Home</HeaderLink>
-      <HeaderLink class={"text-lg"} emoji='👩🏻‍💻' href="/blog">Blog</HeaderLink>
-      <HeaderLink class={"text-lg"} emoji='📚️' href="/books">Books</HeaderLink>
-      <HeaderLink class={"text-lg"} emoji='👩🏻‍⚕️' href="/about">About Me</HeaderLink>
+      <HeaderLink emoji='🏠' href="/">Home</HeaderLink>
+      <HeaderLink emoji='👩🏻‍💻' href="/blog">Blog</HeaderLink>
+      <HeaderLink emoji='📚️' href="/books">Books</HeaderLink>
+      <HeaderLink emoji='👩🏻‍⚕️' href="/about">About Me</HeaderLink>
     </div>
     <a
         data-aos="fade-left"
         data-aos-delay="100"
         class="align-middle font-serif" href="/">
       <h2
-          class="align-middle h-fit py-2 px-4 rounded-4xl text-lg inset-shadow-sm bg-secondary text-primary-foreground"
+          class="align-middle
+          inset-shadow-primary
+           h-fit py-2 px-4 rounded-4xl text-lg inset-shadow-sm bg-secondary text-primary-foreground
+           hover:inset-shadow-xs hover:inset-shadow-foreground hover:scale-[0.95] transition-all duration-200 ease-in-out"
       >
         {SITE_TITLE}
       </h2>
@@ -49,13 +53,12 @@ import HeaderLink from './HeaderLink.astro';
         "rounded-2xl",
         "inset-shadow-sm",
         "inset-shadow-primary-foreground",
-        "[&>*>div]:inset-shadow-primary",
-        "[&>*>a]:inset-shadow-primary"
+        "[&>*>div]:bg-transparent",
       );
       header!.classList.remove(
         "bg-transparent",
-        "[&>*>div]:inset-shadow-secondary-foreground",
-        "[&>*>a]:inset-shadow-secondary-foreground"
+        "[&>*>div]:inset-shadow-sm",
+        "[&>*>div]:bg-primary"
       );
     } else {
       header!.classList.remove(
@@ -65,13 +68,12 @@ import HeaderLink from './HeaderLink.astro';
         "rounded-2xl",
         "inset-shadow-sm",
         "inset-shadow-primary-foreground",
-        "[&>*>div]:inset-shadow-primary",
-        "[&>*>a]:inset-shadow-primary"
+        "[&>*>div]:bg-transparent"
       );
       header!.classList.add(
         "bg-transparent",
-        "[&>*>div]:inset-shadow-secondary-foreground",
-        "[&>*>a]:inset-shadow-secondary-foreground"
+        "[&>*>div]:inset-shadow-sm",
+        "[&>*>div]:bg-primary",
       );
     }
   }
